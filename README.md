@@ -20,7 +20,7 @@ The server is currently hardcoded to first query from Google Maps, and then HERE
 ## Running the Server
 To launch the server from the command line, add the project folder to your PYTHONPATH and run:
 ```
-ipython app/geocode_server.py [parameters]
+python app/geocode_server.py [parameters]
 ```
 By default, the server will use my keys for HERE/Google Maps. You can specify your own keys with the following optional parameters:
 * --here_app_id: The application ID to use with HERE
@@ -30,6 +30,8 @@ By default, the server will use my keys for HERE/Google Maps. You can specify yo
 Also by default, the server will initialize to the local machine on port 8000. To change this behavior, use the following optional parameters:
 * --server_address: The address to start the HTTP server on
 * --server_port: The port to start the HTTP server with
+
+You can also see help on the command line by running the server with `-h`.
 
 ## Querying the Server
 Once the server is running, queries can be made on the command line or browser by navigating to URLs in the format:
