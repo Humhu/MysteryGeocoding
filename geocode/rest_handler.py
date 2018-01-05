@@ -1,4 +1,4 @@
-"""Server handlers for REST requests
+"""Servers and handlers for REST requests
 """
 
 import httplib
@@ -71,5 +71,5 @@ class GeocodeRequestHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.send_response(code=httplib.OK)
         self.send_header('Content-Type', 'application/json')
         self.end_headers()
-        encoded = info.to_json()
+        encoded = info.to_jsons()
         self.wfile.write(encoded)

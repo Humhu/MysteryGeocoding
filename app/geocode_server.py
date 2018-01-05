@@ -18,6 +18,13 @@ if __name__ == '__main__':
     parser.add_argument('--google_api_key',
                         default='AIzaSyCPUagqPZpa8jL1ZvWjnKV9wWextbhZ0EE',
                         help='The API key to use with Google Maps')
+    parser.add_argument('--server_address',
+                        default='',
+                        help='The address to start the server on')
+    parser.add_argument('--server_port',
+                        default=8000,
+                        type=int,
+                        help='The port to start the server with')
 
     args = parser.parse_args()
 
@@ -26,10 +33,14 @@ if __name__ == '__main__':
                                  app_code=args.here_app_code)
 
     # NOTE Order of adding determines precedence
-    server_address = ('', 8000)
+    server_address = (args.server_address, args.server_port)
     server = gc.GeocodeServer(server_address)
     server.add_external(google_coder)
     server.add_external(here_coder)
-    server.serve_forever()
+
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt as e:
+        print 'Shutting down server'
 
     sys.exit(-1)
