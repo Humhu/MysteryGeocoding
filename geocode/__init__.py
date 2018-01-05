@@ -1,3 +1,5 @@
 # Top-level init file for geocode library
 
-from external_interfaces import GoogleGeocoder, HereGeocoder
+from common import *
+from external_interfaces import *
+from rest_handler import *

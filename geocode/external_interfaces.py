@@ -7,20 +7,8 @@ ie. google_maps.py, here.py, I will leave them together here for ease of reading
 import abc
 import json
 import httplib
-from collections import namedtuple
 
-"""Container for standard geocode query responses
-
-Fields
-======
-address : string
-    The matched address
-latitude : float
-    The latitude of the found address
-longitude : float
-    The longitude of the found address
-"""
-GeocodeInfo = namedtuple('GeocodeInfo', ['address', 'latitude', 'longitude'])
+from geocode.common import GeocodeInfo
 
 # TODO Handle multiple results on queries
 # TODO Do more parsing of address to common format
@@ -120,7 +108,6 @@ class ExternalGeocoder:
             Parsed information in dict form
         """
         pass
-
 
 class GoogleGeocoder(ExternalGeocoder):
     """Provides access to the Google Maps geocoding service
